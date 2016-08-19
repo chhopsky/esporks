@@ -1,0 +1,9 @@
+Changelog:
+
+1.2 - Fixed a bug where live text typed into the browser would change Esports to Esporks.
+
+1.1 - Major performance increases, reworked classification engine.
+
+1.0.1 - Cosmetic fixes.  Added support for "e-sporks".
+
+1.0 - Initial release.
