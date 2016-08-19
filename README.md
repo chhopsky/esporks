@@ -1,2 +1,6 @@
-# esporks
-Replaces the word 'Esports' with 'Esporks'.
+ESPORKS
+=======
+
+![](logo.png)
+
+Chrome extension that replaces occurrences of 'esports' with 'esporks'
