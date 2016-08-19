@@ -1,48 +1,47 @@
-walk(document.body);
+var exprs = [
+  [/\bEsports\b/g, "Esporks"],
+  [/\beSports\b/g, "eSporks"],
+  [/\bESporks\b/g, "ESporks"],
+  [/\besports\b/g, "esporks"],
+  [/\bESPORTS\b/g, "ESPORKS"],
+  [/\be-sports\b/g, "e-sporks"]
+]
 
-function walk(node) 
-{
-	var child, next;
-	
-	if (node.tagName == 'input' || node.tagName == 'textarea') {
-		return;
-	}
-
-	switch ( node.nodeType )  
-	{
-		case 1:  // Element
-		case 9:  // Document
-		case 11: // Document fragment
-			child = node.firstChild;
-			while ( child ) 
-			{
-				next = child.nextSibling;
-				console.log(next);
-				walk(child);
-				child = next;
-			}
-			break;
-
-		case 3: // Text node
-			handleText(node);
-			console.log(node);
-			break;
-	}
+function replaceTextInNode(node) {
+  var value = node.nodeValue
+  var expr
+  for (expr of exprs) {
+    value = value.replace(expr[0], expr[1])
+  }
+  node.nodeValue = value
 }
 
-function handleText(textNode) 
-{
-	var v = textNode.nodeValue;
+// Based on http://is.gd/mwZp7E
+function walk(node) {
+  var child, next
 
-	v = v.replace(/\bEsports\b/g, "Esporks");
-	v = v.replace(/\beSports\b/g, "eSporks");
-	v = v.replace(/\bESporks\b/g, "ESporks");
-	v = v.replace(/\besports\b/g, "esporks");
-	v = v.replace(/\bESPORKS\b/g, "ESPORKS");
+  switch (node.nodeType) {
+    case 1:   // element
+    case 9:   // document
+    case 11:  // fragment
+      child = node.firstChild
+      while (child) {
+        next = child.nextSibling
+        walk(child)
+        child = next
+      }
+      break
 
-	console.log(v);
-	
-	textNode.nodeValue = v;
+    case 3:   // text
+      replaceTextInNode(node)
+      break
+  }
 }
 
+document.addEventListener("DOMContentLoaded", function(e) {
+  walk(document.body)
+})
 
+document.addEventListener("DOMNodeInserted", function(e) {
+  walk(e.target)
+})
