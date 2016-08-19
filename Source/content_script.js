@@ -2,8 +2,6 @@ walk(document.body);
 
 function walk(node) 
 {
-	// I stole this function from here:
-	
 	var child, next;
 	
 	if (node.tagName == 'input' || node.tagName == 'textarea') {
