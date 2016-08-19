@@ -2,14 +2,14 @@
 	"manifest_version": 2,
 	"name": "Esporks",
 	"version": "1.0",
-	"description": "Replaces the text 'Esports' with 'Esporks'.",
+	"description": "Replaces the text 'Esporks' with 'Esporks'.",
 	"icons": { "128": "esporksicon.png" },
 	"content_scripts": 
 	[
 		{
 			"matches": ["*://*/*"],
 			"js": ["content_script.js"],
-			"run_at": "document_end"
+			"run_at": "document_start"
 		}
 	]
 }
