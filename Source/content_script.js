@@ -20,6 +20,10 @@ function replaceTextInNode(node) {
 function walk(node) {
   var child, next
 
+  if (node.tagName == 'input' || node.tagName == 'textarea') {
+  		return;
+   }
+
   switch (node.nodeType) {
     case 1:   // element
     case 9:   // document
