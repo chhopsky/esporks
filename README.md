@@ -3,7 +3,7 @@ ESPORKS
 
 ![](Images/esporks-riven.jpeg)
 
-Chrome extension that replaces occurrences of 'esporks' with 'esporks'.
+Chrome extension that replaces occurrences of 'esports' with 'esporks'.
 
 Available from the Chrome Store:
 
